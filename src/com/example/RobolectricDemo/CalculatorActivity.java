@@ -49,7 +49,7 @@ public class CalculatorActivity extends Activity {
         secondOperandTextView = (EditText) findViewById(R.id.second_operand);
 
         firstOperand = Integer.parseInt(this.firstOperandTextView.getText().toString());
-        if (secondOperandTextView != null)
+        if (secondOperandTextView.getVisibility() == View.VISIBLE)
             secondOperand = Integer.parseInt(this.secondOperandTextView.getText().toString());
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_operations);
