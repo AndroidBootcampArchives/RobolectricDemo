@@ -1,0 +1,13 @@
+tmp/**
+bin
+gen
+.idea
+ant.propeties
+local.properties
+*.iml
+out
+*.ipr
+*.iws
+/out
+.DS_Store
+*.patch

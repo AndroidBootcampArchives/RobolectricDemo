@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/first_operand" android:layout_gravity="center" android:hint="enter first operand"
+            android:inputType="number"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/second_operand" android:hint="enter second operand"
+            android:inputType="number"/>
+    <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" android:id="@+id/radio_group_operations">
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Addition"
+                android:id="@+id/radio_add" android:checked="true" android:layout_weight="1"/>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Factorial"
+                android:id="@+id/radio_factorial" android:checked="false"
+                android:onClick=""
+                android:layout_weight="1"/>
+    </RadioGroup>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Result"
+            android:onClick="performOperation"
+            android:id="@+id/btn_result" android:layout_gravity="left|center_vertical"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_result" android:layout_gravity="center" android:hint="result displayed here"/>
+</LinearLayout>
+
