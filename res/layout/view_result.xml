@@ -5,6 +5,7 @@
           android:layout_height="match_parent" android:orientation="vertical">
 <TextView
         android:id="@+id/view_result"
-        android:layout_width="fill_parent" android:layout_height="40dp" android:background="#ffeedd"
+        android:layout_width="fill_parent" android:layout_height="40dp"
+        android:background="#ffeedd"
         android:textColor="#000000"/>
 </LinearLayout>
