@@ -33,6 +33,9 @@ public class CalculatorActivity extends Activity {
         });
     }
 
+    public void hideSecondOperand(View view){
+        findViewById(R.id.second_operand).setVisibility(View.GONE);
+    }
     private void makeBothOperandsVisible() {
         findViewById(R.id.first_operand).setVisibility(View.VISIBLE);
         findViewById(R.id.second_operand).setVisibility(View.VISIBLE);
@@ -49,7 +52,7 @@ public class CalculatorActivity extends Activity {
         secondOperandTextView = (EditText) findViewById(R.id.second_operand);
 
         firstOperand = Integer.parseInt(this.firstOperandTextView.getText().toString());
-        if (secondOperandTextView != null)
+        if (secondOperandTextView != null && secondOperandTextView.getVisibility() == View.VISIBLE)
             secondOperand = Integer.parseInt(this.secondOperandTextView.getText().toString());
 
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group_operations);
