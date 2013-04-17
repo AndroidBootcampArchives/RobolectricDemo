@@ -10,7 +10,7 @@ import org.robolectric.shadows.ShadowActivity;
 import org.robolectric.shadows.ShadowIntent;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import static org.robolectric.Robolectric.shadowOf;
 
 @RunWith(RobolectricTestRunner.class)
@@ -29,12 +29,7 @@ public class CalculatorActivityTest {
         calculatorActivity = new CalculatorActivity();
         calculatorActivity.onCreate(null);
         firstOperandTextView = (EditText)calculatorActivity.findViewById(R.id.first_operand);
-        secondOperandTextView = (EditText)calculatorActivity.findViewById(R.id.second_operand);
-        radioGroupOperations = (RadioGroup) calculatorActivity.findViewById(R.id.radio_group_operations);
-        addRadioButton = (RadioButton) calculatorActivity.findViewById(R.id.radio_add);
-        factorialRadioButton = (RadioButton) calculatorActivity.findViewById(R.id.radio_factorial);
-        resultTextView = (TextView) calculatorActivity.findViewById(R.id.text_result);
-        resultBtnView = (Button) calculatorActivity.findViewById(R.id.btn_result);
+       //inflate other views taking the above one as example.
     }
 
     @Test
@@ -47,85 +42,29 @@ public class CalculatorActivityTest {
         assertThat(firstOperandTextView.getVisibility(), equalTo(View.VISIBLE));
     }
 
-    @Test
-    public void shouldHaveTextboxForSecondOperand(){
-        assertThat(secondOperandTextView.getVisibility(), equalTo(View.VISIBLE));
-    }
-
-    @Test
-    public void shouldHaveResultTextBox() {
-        assertThat(resultTextView.getVisibility(), equalTo(View.VISIBLE));
-    }
-
-    @Test
-    public void shouldHaveResultButton() {
-        assertThat(resultBtnView.getVisibility(), equalTo(View.VISIBLE));
-    }
-
-    @Test
-    public void shouldHaveCorrectTextOnResultButton() {
-        assertThat(resultBtnView.getText().toString(), equalTo("Result"));
-    }
-    @Test
-    public void shouldHaveAddRadioButton() {
-        assertThat(addRadioButton.getVisibility(), equalTo(View.VISIBLE));
-
-    }
-
-    @Test
-    public void shouldHaveFactorialRadioButton() {
-        assertThat(factorialRadioButton.getVisibility(), equalTo(View.VISIBLE));
-
-    }
 
     @Test
     public void shouldHaveAddRadioButtonCheckedByDefault() {
-        assertTrue(addRadioButton.isChecked());
-        assertFalse(factorialRadioButton.isChecked());
     }
 
     @Test
     public void shouldHaveOnlyFirstOperandForFactorialOperation() {
-        factorialRadioButton.setChecked(true);
-        assertThat(secondOperandTextView.getVisibility(), equalTo(View.GONE));
+        //check the factorial radio button
+        //assert on the visibility of the secondOperand
     }
-
-//    @Test
-//    public void shouldTakeOnlyNumbersForFirstOperand() {
-//        firstOperandTextView.setText("123");
-//        assertThat(firstOperandTextView.getText().toString(), equalTo("123"));
-//
-//        View.OnKeyListener onKeyListener = new View.OnKeyListener() {
-//            @Override
-//            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-//                return true;
-//            }
-//        };
-//        firstOperandTextView.setOnKeyListener(onKeyListener);
-//        boolean b;
-//        b = onKeyListener.onKey(firstOperandTextView, KeyEvent.KEYCODE_B, new KeyEvent(ACTION_UP));
-//
-////        firstOperandTextView.setText("abc");
-//        assertThat(firstOperandTextView.getText().toString(), equalTo(""));
-//    }
 
     @Test
     public void shouldDisplayAdditionResultOnClickOfResultButton() {
-        firstOperandTextView.setText("12");
-        secondOperandTextView.setText("21");
-        addRadioButton.setChecked(true);
-        resultBtnView.performClick();
-        assertThat(resultTextView.getText().toString(), equalTo("33"));
+        // set the values in for both the operands
+        //click the result button
+        //assert the result
     }
 
     @Test
     public void shouldDisplayFactorialResultOnClickOfResultButton() {
-        firstOperandTextView.setText("5");
-        secondOperandTextView.setText("21");
-        factorialRadioButton.setChecked(true);
-        resultBtnView.performClick();
-        assertThat(resultTextView.getText().toString(), equalTo("120"));
-
+        // set the values in for both the operands
+        //click the result button
+        //assert the result
     }
 
     @Test
@@ -140,5 +79,11 @@ public class CalculatorActivityTest {
         assertThat(shadowIntent.getStringExtra(CalculatorActivity.RESULT_EXTRAS), equalTo("33"));
     }
 
+    @Test
+    public void shouldPopAnAlertForNoOperandEntered() {
+       // set the operands as blank
+        //click the result button
+        //assert on the alert dialog with a particular title and message.
+    }
 
 }
