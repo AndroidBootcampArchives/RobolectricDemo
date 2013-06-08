@@ -13,6 +13,7 @@ public class ViewResultActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_result);
         resultTextView = (TextView) findViewById(R.id.view_result);
+
         setResultFromIntent();
     }
 
