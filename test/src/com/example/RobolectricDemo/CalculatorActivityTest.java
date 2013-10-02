@@ -1,7 +1,6 @@
 package com.example.RobolectricDemo;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.view.View;
 import android.widget.*;
 import org.junit.Before;
@@ -15,6 +14,7 @@ import org.robolectric.shadows.ShadowIntent;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.robolectric.Robolectric.buildActivity;
 import static org.robolectric.Robolectric.shadowOf;
 
 @RunWith(RobolectricTestRunner.class)
@@ -22,7 +22,6 @@ public class CalculatorActivityTest {
     CalculatorActivity calculatorActivity;
     EditText firstOperandTextView;
     EditText secondOperandTextView;
-    RadioGroup radioGroupOperations;
     RadioButton addRadioButton;
     RadioButton factorialRadioButton;
     TextView resultTextView;
@@ -30,7 +29,7 @@ public class CalculatorActivityTest {
 
     @Before
     public void setUp(){
-        calculatorActivity = new CalculatorActivity();
+        calculatorActivity = buildActivity(CalculatorActivity.class).create().get();
         calculatorActivity.onCreate(null);
         firstOperandTextView = (EditText)calculatorActivity.findViewById(R.id.first_operand);
         secondOperandTextView = (EditText)calculatorActivity.findViewById(R.id.second_operand);
@@ -107,8 +106,7 @@ public class CalculatorActivityTest {
         AlertDialog latestAlertDialog = ShadowAlertDialog.getLatestAlertDialog();
         ShadowAlertDialog shadowAlertDialog = shadowOf(latestAlertDialog);
         assertThat(shadowAlertDialog.getTitle().toString(), equalTo("Error"));
-        assertThat(shadowAlertDialog.getMessage(), equalTo("Operand Empty"));
-        assertThat(shadowAlertDialog.getButton(DialogInterface.BUTTON_POSITIVE).getText().toString(), equalTo("OK"));
+        assertThat(shadowAlertDialog.getMessage().toString(), equalTo("Operand Empty"));
     }
 
 }

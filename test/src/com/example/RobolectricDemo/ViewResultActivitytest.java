@@ -5,11 +5,12 @@ import android.widget.TextView;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static org.robolectric.Robolectric.shadowOf;
+import static org.robolectric.Robolectric.buildActivity;
 
 @RunWith(RobolectricTestRunner.class)
 public class ViewResultActivitytest {
@@ -17,9 +18,8 @@ public class ViewResultActivitytest {
 
     @Before
     public void setUp(){
-        ViewResultActivity viewResultActivity = new ViewResultActivity();
-        shadowOf(viewResultActivity).setIntent(new Intent().putExtra(CalculatorActivity.RESULT_EXTRAS, "25"));
-        viewResultActivity.onCreate(null);
+        Intent intent = new Intent(Robolectric.application, ViewResultActivity.class).putExtra(CalculatorActivity.RESULT_EXTRAS, "25");
+        ViewResultActivity viewResultActivity = buildActivity(ViewResultActivity.class).withIntent(intent).create().get();
         resultTextView = (TextView) viewResultActivity.findViewById(R.id.view_result);
     }
     @Test
