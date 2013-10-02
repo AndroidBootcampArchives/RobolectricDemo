@@ -1,0 +1,50 @@
+start_test_server_in_background
+start_test_server_in_background
+performAction('inspect_current_dialog')
+performAction('list_all_actions')
+performAction('list_actions')
+performAction('enter_text_into_id_field', '3','id/first_operand')
+performAction('enter_text_into_id_field', '45','first_operand')
+performAction('clear_id_field', '45','first_operand')
+performAction('clear_id_field','first_operand')
+performAction('clear_id_field', '45','first_operand')
+performAction('enter_text_into_id_field', '45','first_operand')
+performAction('enter_text_into_id_field', '4','second_operand')
+performAction('inspect_current_dialog')
+performAction('toggle_numbered_checkbox', '1')
+performAction('toggle_numbered_checkbox', '2')
+performAction('toggle_numbered_checkbox', 2)
+performAction('inspect_current_dialog')
+performAction('list_actions')
+performAction('click_on_view_by_id', 'radio_add')
+performAction('click_on_view_by_id', 'radio_factorial')
+performAction('click_on_view_by_id', 'id/btn_result')
+performAction('click_on_view_by_id', 'radio_add')
+performAction('click_on_view_by_id', 'id/btn_result')
+exit
+performAction('list_actions')
+performAction('list_action')
+performAction('list_actions')
+performAction('list_action')
+performAction('list_actions')
+exit
+start_test_server_in_background
+performAction( 'assert_view_property', view_id, property, value )
+performAction( 'inspect_current_dialog' )
+performAction( 'assert_view_property', id/view_result, "text", 17 )
+performAction( 'assert_view_property', 'view_result', "text", 17 )
+performAction( 'assert_view_property', 'view_result', "text", 17w )
+performAction( 'assert_view_property', 'view_result', "text", 171 )
+performAction( 'assert_view_property', 'view_result', "text", 171 )
+performAction( 'assert_view_property', 'view_result', "text", 17 )
+performAction( 'assert_view_property', 'view_result', "text", 17 )
+exit
+performAction('enter_text_into_id_field', '33','first_operand')
+performAction('enter_text_into_id_field', '33','first_operand')
+exit
+performAction('enter_text_into_id_field', '33','first_operand')
+exit
+performAction('list_actions')
+exit
+performAction('list_actions')
+exit

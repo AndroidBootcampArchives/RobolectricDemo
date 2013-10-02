@@ -10,7 +10,8 @@ import org.robolectric.shadows.ShadowActivity;
 import org.robolectric.shadows.ShadowIntent;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
+import static org.robolectric.Robolectric.buildActivity;
 import static org.robolectric.Robolectric.shadowOf;
 
 @RunWith(RobolectricTestRunner.class)
@@ -26,8 +27,7 @@ public class CalculatorActivityTest {
 
     @Before
     public void setUp(){
-        calculatorActivity = new CalculatorActivity();
-        calculatorActivity.onCreate(null);
+        calculatorActivity = buildActivity(CalculatorActivity.class).create().get();
         firstOperandTextView = (EditText)calculatorActivity.findViewById(R.id.first_operand);
        //inflate other views taking the above one as example.
     }
@@ -62,9 +62,10 @@ public class CalculatorActivityTest {
 
     @Test
     public void shouldDisplayFactorialResultOnClickOfResultButton() {
-        // set the values in for both the operands
-        //click the result button
-        //assert the result
+        firstOperandTextView.setText("5");
+        factorialRadioButton.setChecked(true);
+        resultBtnView.performClick();
+        assertThat(resultTextView.getText().toString(), equalTo("120"));
     }
 
     @Test
