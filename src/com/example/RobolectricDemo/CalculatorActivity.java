@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.*;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class CalculatorActivity extends Activity {
     private RadioGroup radioGroupOperations = null;
@@ -51,18 +53,13 @@ public class CalculatorActivity extends Activity {
         RadioButton factorialButton = (RadioButton) findViewById(R.id.radio_factorial);
         boolean isValid = factorialButton.isChecked() ?!isEmpty(firstOperandTextView) : !isEmpty(firstOperandTextView) && !isEmpty(secondOperandTextView) ;
         if(!isValid){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Error")
-                   .setMessage("Operand Empty")
-                   .setPositiveButton("OK", null)
-                   .create().show();
+            showError();
             return;
         }
         if (factorialButton.isChecked()) {
-            resultValue = 1;
-            for (int i = 1; i <= integerValueFromView(firstOperandTextView); i++) {resultValue *= i;}
+            resultValue = calculateFactorial();
         } else {
-            resultValue = integerValueFromView(firstOperandTextView) + integerValueFromView(secondOperandTextView);
+            resultValue = add();
         }
         String resultText = String.valueOf(resultValue);
         resultTextView.setText(resultText);
@@ -70,6 +67,24 @@ public class CalculatorActivity extends Activity {
         intent.putExtra(CalculatorActivity.RESULT_EXTRAS, resultText);
         startActivity(intent);
 
+    }
+
+    private int calculateFactorial() {
+        int resultValue = 1;
+        for (int i = 1; i <= integerValueFromView(firstOperandTextView); i++) {resultValue *= i;}
+        return resultValue;
+    }
+
+    private int add() {
+        return integerValueFromView(firstOperandTextView) + integerValueFromView(secondOperandTextView);
+    }
+
+    private void showError() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Error")
+               .setMessage("Operand Empty")
+               .setPositiveButton("OK", null)
+               .create().show();
     }
 
     private boolean isEmpty(EditText textView) {
