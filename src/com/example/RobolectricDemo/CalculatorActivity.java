@@ -57,9 +57,9 @@ public class CalculatorActivity extends Activity {
             return;
         }
         if (factorialButton.isChecked()) {
-            resultValue = calculateFactorial();
+            resultValue = CalculatorHelper.calculateFactorial(integerValueFromView(firstOperandTextView));
         } else {
-            resultValue = add();
+            resultValue = CalculatorHelper.add(integerValueFromView(firstOperandTextView), integerValueFromView(secondOperandTextView));
         }
         String resultText = String.valueOf(resultValue);
         resultTextView.setText(resultText);
@@ -69,15 +69,6 @@ public class CalculatorActivity extends Activity {
 
     }
 
-    private int calculateFactorial() {
-        int resultValue = 1;
-        for (int i = 1; i <= integerValueFromView(firstOperandTextView); i++) {resultValue *= i;}
-        return resultValue;
-    }
-
-    private int add() {
-        return integerValueFromView(firstOperandTextView) + integerValueFromView(secondOperandTextView);
-    }
 
     private void showError() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
